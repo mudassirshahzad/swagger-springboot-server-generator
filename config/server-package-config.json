@@ -1,0 +1,11 @@
+{
+"basePackage":"com.mudassirshahzad.swaggerServer",
+"configPackage":"com.mudassirshahzad.swaggerServer.configuration",
+"modelPackage":"com.mudassirshahzad.swaggerServer.model",
+"apiPackage":"com.mudassirshahzad.swaggerServer.api",
+"java8": true,
+"artifactId": "swagger-springboot-server",
+"artifactVersion": "1.0.0",
+"developerName": "MudassirShahzad",
+"useBeanValidation": false
+}

@@ -1,0 +1,130 @@
+swagger: '2.0'
+info:
+  description: Mudassir Shahzad - Test Services.
+  version: 1.0.0
+  title: Mudassir Shahzad - Test Services
+host: testservices.mudassirshahzad.com
+basePath: /initialEndpoint
+schemes:
+  - http
+paths:
+  /postSomething:
+    post:
+      tags:
+        - Test Endpoint
+      summary: Initiates a test POST transaction.
+      description: ''
+      operationId: testTransaction1
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: sesssionId
+          description: session ID.
+          required: true
+          type: string
+        - in: header
+          name: anyOtherId
+          description: other id.
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: TestProduct list for transaction1.
+          required: true
+          schema:
+            $ref: '#/definitions/TestProductListTransaction1'
+      responses:
+        '201':
+          description: successful testTransaction1 
+          schema:
+            $ref: '#/definitions/TestProductListTransaction1'
+        '400':
+          description: Invalid request. 
+          schema:
+            $ref: '#/definitions/Error'
+        '500':
+          description: Error in processing the request. 
+          schema:
+            $ref: '#/definitions/Error'
+  /profiles/{someNumber}/getSomething:
+    get:
+      tags:
+        - Test Endpoint
+      summary: Initiates a test GET transaction.
+      description: ''
+      operationId: testTransaction2
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: someNumber
+          description: .
+          required: true
+          type: string
+        - in: header
+          name: sesssionId
+          description: session ID.
+          required: true
+          type: string
+        - in: header
+          name: anyOtherId
+          description: other id.
+          required: true
+          type: string
+      responses:
+        '201':
+          description: successful testTransaction2 
+          schema:
+            $ref: '#/definitions/TestProductListTransaction2'
+        '400':
+          description: Invalid request. 
+          schema:
+            $ref: '#/definitions/Error'
+        '500':
+          description: Error in processing the request. 
+          schema:
+            $ref: '#/definitions/Error'
+definitions:
+  TestProductListTransaction1:
+    type: object
+    required:
+      - param1
+    properties:
+      param1:
+        type: string
+        description: Session id. 
+      param2:
+        type: string
+        description: Other Id. sample value 00999990390.
+  TestProductListTransaction2:
+    type: object
+    required:
+      - param1
+      - param2
+    properties:
+      param1:
+        type: string
+        description: Session id.
+      param2:
+        type: string
+        description: Other Id. sample value 00999990390.
+  Error:
+    type: object
+    required:
+      - errorCode
+    properties:
+      errorCode:
+        type: string
+        description: error code 
+      systemErrorCode:
+        type: string
+        description: error code given by the backend system, CRIS
+      errorDescription:
+        type: string
+        description: description of the error code.
+  
